@@ -1,16 +1,19 @@
-# React + Vite
+# HSEFQ Project - Internship Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a frontend project setup built with **React (Vite)** and **Tailwind CSS**. It serves as the foundation for the internship tasks, featuring a responsive layout with a header and sidebar.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
+**[Click Here to View Live Website](https://internship-hsefq.vercel.app/)**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Tech Stack
+* **Framework:** React 18 (Vite)
+* **Styling:** Tailwind CSS
+* **Icons:** Heroicons (SVG)
+* **Deployment:** Vercel
 
-## React Compiler
+## ✨ Features
+* **Responsive Layout:** Adapts to Mobile and Desktop screens.
+* **Top Header:** Sticky navigation with user profile and mobile menu toggle.
+* **Sidebar:** collapsible navigation for main content.
+* **Modern Styling:** Clean UI using Tailwind utility classes.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

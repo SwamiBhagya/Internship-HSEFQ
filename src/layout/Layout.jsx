@@ -1,17 +1,17 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Sidebar from '../components/Sidebar';
-import { FaRegBell, FaUserCircle, FaSearch } from 'react-icons/fa';
+import React from "react";
+import { Outlet } from "react-router-dom";
+import Sidebar from "../components/Sidebar";
+import { FaRegBell, FaUserCircle, FaSearch } from "react-icons/fa";
 
 const Layout = () => {
   return (
-    <div className="flex h-screen bg-gray-50 overflow-hidden">
+    // Add 'min-h-screen' and 'w-full'
+    <div className="flex min-h-screen w-full bg-gray-50 overflow-hidden">
+      {" "}
       {/* 1. Sidebar stays fixed on the left */}
       <Sidebar />
-
       {/* 2. Right Side Container (Navbar + Page Content) */}
       <div className="flex-1 flex flex-col h-full overflow-hidden">
-        
         {/* --- THE NEW NAVBAR START --- */}
         <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 shadow-sm shrink-0">
           {/* Search Bar */}
@@ -19,9 +19,9 @@ const Layout = () => {
             <span className="absolute inset-y-0 left-0 flex items-center pl-3">
               <FaSearch className="text-gray-400" />
             </span>
-            <input 
-              type="text" 
-              placeholder="Search safety reports..." 
+            <input
+              type="text"
+              placeholder="Search safety reports..."
               className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50 text-sm"
             />
           </div>
@@ -40,7 +40,9 @@ const Layout = () => {
             <div className="flex items-center gap-3 border-l pl-6">
               <div className="text-right">
                 <p className="text-sm font-bold text-gray-800">Bhagya</p>
-                <p className="text-[10px] uppercase tracking-wider text-blue-600 font-semibold">HSE Admin</p>
+                <p className="text-[10px] uppercase tracking-wider text-blue-600 font-semibold">
+                  HSE Admin
+                </p>
               </div>
               <FaUserCircle size={35} className="text-gray-400" />
             </div>

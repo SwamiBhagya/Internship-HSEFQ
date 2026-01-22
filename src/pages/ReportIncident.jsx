@@ -44,7 +44,7 @@ const ReportIncident = () => {
 
   // 4. The Main Form View
   return (
-    <div className="max-w-2xl mx-auto">
+    <div className="max-w-2xl mx-auto my-10 ">
       {/* Page Header */}
       <div className="mb-6">
         <h1 className="text-2xl font-bold text-gray-800 flex items-center gap-2">

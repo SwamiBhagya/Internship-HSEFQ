@@ -1,6 +1,6 @@
 import React from 'react';
 
-function App() {
+function App() { 
   return (
     // 1. MAIN CONTAINER)
     <div className="flex flex-col h-screen">

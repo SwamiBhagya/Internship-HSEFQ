@@ -1,69 +1,134 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-// Importing specific icons from the 'fa' (FontAwesome) pack
-import { FaHome, FaHardHat, FaFire, FaCog, FaPlus } from 'react-icons/fa';
+import { Link, useLocation } from 'react-router-dom'; 
+import { FaHome, FaHardHat, FaFire, FaCog, FaPlus, FaTimes, FaShieldAlt, FaSignOutAlt } from 'react-icons/fa';
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, onClose }) => {
+  // 1. Get the current URL path so we can highlight the active link
+  const location = useLocation();
+  const isActive = (path) => location.pathname === path;
+
   return (
-    <div className="w-64 h-screen bg-slate-900 text-white flex flex-col shrink-0">
+    <aside className={`
+      /* Layout & Sizing */
+      w-72 md:w-64 h-screen flex flex-col shrink-0 z-50
+      /* Appearance */
+      bg-slate-900 text-white border-r border-slate-800 shadow-xl
+      /* Responsive Logic */
+      fixed md:relative transition-transform duration-300 ease-in-out
+      ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0
+    `}>
       
-      {/* Clickable Logo Area - Takes you to the front page ("/") */}
-      <Link 
-        to="/" 
-        className="h-16 flex items-center justify-center border-b border-slate-700 hover:bg-slate-800 transition-colors duration-200 cursor-pointer"
-      >
-        <h1 className="text-xl font-bold tracking-wider text-blue-400">HSEFQ App</h1>
-      </Link>
+      {/* 1. Mobile Close Button (Top Right) */}
+      <div className="md:hidden absolute right-4 top-4 z-50">
+        <button 
+          onClick={onClose} 
+          className="p-2 text-slate-400 hover:text-white hover:bg-slate-800 rounded-full transition"
+        >
+          <FaTimes size={20} />
+        </button>
+      </div>
 
-      {/* Navigation Links */}
-      <nav className="flex-1 px-4 py-6 space-y-2">
+      {/* 2. Logo Section */}
+      <div className="h-20 flex items-center px-6 border-b border-slate-800">
+        <Link to="/" onClick={onClose} className="flex items-center gap-3 group">
+          <div className="p-2 bg-blue-600 rounded-lg group-hover:bg-blue-500 transition shadow-lg shadow-blue-900/50">
+            <FaShieldAlt className="text-xl text-white" />
+          </div>
+          <div>
+            <h1 className="text-lg font-bold tracking-wide text-white">HSEFQ</h1>
+            <p className="text-[10px] text-slate-400 uppercase tracking-wider font-semibold">Safety Portal</p>
+          </div>
+        </Link>
+      </div>
+
+      {/* 3. Navigation Links */}
+      <nav className="flex-1 px-4 py-6 space-y-1.5 overflow-y-auto">
         
         {/* Dashboard Link */}
-        <Link 
+        <SidebarLink 
           to="/" 
-          className="flex items-center gap-3 px-4 py-3 rounded hover:bg-slate-800 transition-all duration-200"
-        >
-          <FaHome className="text-xl text-slate-400" />
-          <span>Dashboard</span>
-        </Link>
+          icon={<FaHome />} 
+          label="Dashboard" 
+          active={isActive('/')} 
+          onClick={onClose} 
+        />
 
         {/* Safety Link */}
-        <Link 
+        <SidebarLink 
           to="/safety" 
-          className="flex items-center gap-3 px-4 py-3 rounded hover:bg-slate-800 transition-all duration-200"
-        >
-          <FaHardHat className="text-xl text-slate-400" /> 
-          <span>Safety & Health</span>
-        </Link>
+          icon={<FaHardHat />} 
+          label="Safety & Health" 
+          active={isActive('/safety')} 
+          onClick={onClose} 
+        />
 
-        {/* Report Incident Link - Highlighted because it is a primary action */}
+        {/* Separator Line */}
+        <div className="py-2">
+          <div className="h-px bg-slate-800 mx-4"></div>
+        </div>
+
+        {/* Report Incident (Special CTA Style) */}
         <Link 
           to="/report" 
-          className="flex items-center gap-3 px-4 py-3 rounded bg-blue-600/10 text-blue-400 hover:bg-blue-600 hover:text-white transition-all duration-200 border border-blue-600/20"
+          onClick={onClose}
+          className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 border ${
+            isActive('/report')
+              ? "bg-blue-600/20 border-blue-500/50 text-blue-400 shadow-inner"
+              : "bg-gradient-to-r from-blue-600/10 to-transparent border-transparent text-blue-400 hover:bg-blue-600/20 hover:text-blue-300"
+          }`}
         >
-          <FaPlus className="text-xl" />
+          <div className={`p-1.5 rounded-lg ${isActive('/report') ? "bg-blue-500 text-white" : "bg-blue-900/50 text-blue-400"}`}>
+            <FaPlus size={12} />
+          </div>
           <span className="font-semibold">Report Incident</span>
         </Link>
 
-        {/* Disabled Links for now */}
-        <div className="flex items-center gap-3 px-4 py-3 rounded opacity-40 cursor-not-allowed">
-          <FaFire className="text-xl" />
-          <span>Fire Systems</span>
+        {/* Coming Soon Section */}
+        <div className="mt-8 mb-2 px-4">
+          <p className="text-[10px] font-bold text-slate-600 uppercase tracking-wider">Coming Soon</p>
         </div>
-
-        <div className="flex items-center gap-3 px-4 py-3 rounded opacity-40 cursor-not-allowed">
-          <FaCog className="text-xl" />
-          <span>Settings</span>
-        </div>
+        
+        <DisabledLink icon={<FaFire />} label="Fire Systems" />
+        <DisabledLink icon={<FaCog />} label="Settings" />
 
       </nav>
 
-      {/* Optional: User Footer in Sidebar */}
-      <div className="p-4 border-t border-slate-700 text-xs text-slate-500">
-        v1.0.0 - Bhagya Dashboard
+      {/* 4. Footer / Logout */}
+      <div className="p-4 border-t border-slate-800">
+        <button className="flex items-center gap-3 w-full px-4 py-3 text-slate-400 hover:bg-red-500/10 hover:text-red-400 rounded-xl transition-all duration-200 group">
+          <FaSignOutAlt className="group-hover:translate-x-1 transition-transform" />
+          <span className="font-medium">Log Out</span>
+        </button>
+        <p className="text-center text-[10px] text-slate-600 mt-4 opacity-50">v1.0.0 • Bhagya Intern Project</p>
       </div>
-    </div>
+    </aside>
   );
 };
+
+// --- Helper Components to keep code clean ---
+
+const SidebarLink = ({ to, icon, label, active, onClick }) => (
+  <Link 
+    to={to} 
+    onClick={onClick}
+    className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 group ${
+      active 
+        ? "bg-blue-600 text-white shadow-md shadow-blue-900/30 translate-x-1" 
+        : "text-slate-400 hover:bg-slate-800 hover:text-white hover:translate-x-1"
+    }`}
+  >
+    <span className={`text-lg ${active ? "text-white" : "text-slate-500 group-hover:text-white"}`}>
+      {icon}
+    </span>
+    <span className="font-medium">{label}</span>
+  </Link>
+);
+
+const DisabledLink = ({ icon, label }) => (
+  <div className="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-700 cursor-not-allowed hover:bg-slate-800/20 opacity-60">
+    <span className="text-lg">{icon}</span>
+    <span>{label}</span>
+  </div>
+);
 
 export default Sidebar;

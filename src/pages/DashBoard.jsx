@@ -48,7 +48,7 @@ const Dashboard = () => {
 
   return (
     // Added 'animate-fadeIn' for smooth entry
-    <div className="space-y-6 md:space-y-8 animate-fadeIn pb-20 md:pb-0">
+    <div className="space-y-6 md:space-y-8 animate-fadeIn pb-20 md:pb-0 m-10">
       {/* 1. Header Section */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 px-2 md:px-0 mx-10 my-10">
         <div>

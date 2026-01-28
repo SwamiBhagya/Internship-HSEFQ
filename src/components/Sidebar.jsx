@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { FaHome, FaHardHat, FaFire, FaCog, FaPlus, FaTimes, FaShieldAlt, FaSignOutAlt } from 'react-icons/fa';
 
 const Sidebar = ({ isOpen, onClose }) => {
-  // 1. Get the current URL path so we can highlight the active link
   const location = useLocation();
   const isActive = (path) => location.pathname === path;
 
@@ -13,12 +12,12 @@ const Sidebar = ({ isOpen, onClose }) => {
       w-72 md:w-64 h-screen flex flex-col shrink-0 z-50
       /* Appearance */
       bg-slate-900 text-white border-r border-slate-800 shadow-xl
-      /* Responsive Logic */
-      fixed md:relative transition-transform duration-300 ease-in-out
+      /* Responsive Logic: Fixed on mobile, STICKY on desktop */
+      fixed md:sticky md:top-0 transition-transform duration-300 ease-in-out
       ${isOpen ? "translate-x-0" : "-translate-x-full"} md:translate-x-0
     `}>
       
-      {/* 1. Mobile Close Button (Top Right) */}
+      {/* 1. Mobile Close Button */}
       <div className="md:hidden absolute right-4 top-4 z-50">
         <button 
           onClick={onClose} 
@@ -42,9 +41,8 @@ const Sidebar = ({ isOpen, onClose }) => {
       </div>
 
       {/* 3. Navigation Links */}
-      <nav className="flex-1 px-4 py-6 space-y-1.5 overflow-y-auto">
+      <nav className="flex-1 px-4 py-6 space-y-1.5 overflow-y-auto custom-scrollbar">
         
-        {/* Dashboard Link */}
         <SidebarLink 
           to="/" 
           icon={<FaHome />} 
@@ -53,7 +51,6 @@ const Sidebar = ({ isOpen, onClose }) => {
           onClick={onClose} 
         />
 
-        {/* Safety Link */}
         <SidebarLink 
           to="/safety" 
           icon={<FaHardHat />} 
@@ -62,12 +59,10 @@ const Sidebar = ({ isOpen, onClose }) => {
           onClick={onClose} 
         />
 
-        {/* Separator Line */}
         <div className="py-2">
           <div className="h-px bg-slate-800 mx-4"></div>
         </div>
 
-        {/* Report Incident (Special CTA Style) */}
         <Link 
           to="/report" 
           onClick={onClose}
@@ -83,7 +78,6 @@ const Sidebar = ({ isOpen, onClose }) => {
           <span className="font-semibold">Report Incident</span>
         </Link>
 
-        {/* Coming Soon Section */}
         <div className="mt-8 mb-2 px-4">
           <p className="text-[10px] font-bold text-slate-600 uppercase tracking-wider">Coming Soon</p>
         </div>
@@ -93,7 +87,7 @@ const Sidebar = ({ isOpen, onClose }) => {
 
       </nav>
 
-      {/* 4. Footer / Logout */}
+      {/* 4. Footer */}
       <div className="p-4 border-t border-slate-800">
         <button className="flex items-center gap-3 w-full px-4 py-3 text-slate-400 hover:bg-red-500/10 hover:text-red-400 rounded-xl transition-all duration-200 group">
           <FaSignOutAlt className="group-hover:translate-x-1 transition-transform" />
@@ -105,7 +99,7 @@ const Sidebar = ({ isOpen, onClose }) => {
   );
 };
 
-// --- Helper Components to keep code clean ---
+// --- Helper Components ---
 
 const SidebarLink = ({ to, icon, label, active, onClick }) => (
   <Link 

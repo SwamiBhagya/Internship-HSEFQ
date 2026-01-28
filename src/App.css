@@ -1,11 +1,1 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* This ensures the body always fills the whole screen */
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: #f9fafb; /* This is the gray-50 color */
-}
+@import "tailwindcss";

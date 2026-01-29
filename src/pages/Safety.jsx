@@ -12,7 +12,7 @@ const Safety = () => {
   return (
     <div className="max-w-6xl mx-auto space-y-8 m-10">
       {/* 1. Header with Emergency Banner - Visually Distinct */}
-      <div className="bg-red-50 border border-red-100 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      {/* <div className="bg-red-50 border border-red-100 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
           <h1 className="text-2xl font-bold text-red-700 flex items-center gap-2">
             <FaPhoneAlt /> Emergency Contacts
@@ -26,7 +26,7 @@ const Safety = () => {
           <EmergencyBadge number="102" label="Ambulance" />
           <EmergencyBadge number="+91 99999 99999" label="Plant Manager" />
         </div>
-      </div>
+      </div> */}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* 2. Left Column: Standard Operating Procedures (SOPs) */}

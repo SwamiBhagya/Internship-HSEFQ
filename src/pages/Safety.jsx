@@ -135,7 +135,7 @@ const Safety = () => {
 // --- Sub-Components for Clean Code ---
 
 const EmergencyBadge = ({ number, label }) => (
-  <div className="bg-white/60 border border-red-200 px-4 py-2 rounded-lg text-center min-w-[100px]">
+  <div className="bg-white/60 border border-red-200 px-4 py-2 rounded-lg text-center min-w-25">
     <div className="text-lg font-bold text-red-700">{number}</div>
     <div className="text-[10px] uppercase font-bold text-red-400">{label}</div>
   </div>

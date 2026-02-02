@@ -116,7 +116,7 @@ const Layout = () => {
                 </button>
 
                 {/* Vertical Divider */}
-                <div className="h-8 w-[1px] bg-gray-200 dark:bg-slate-700 hidden md:block"></div>
+                <div className="h-8 w-1px bg-gray-200 dark:bg-slate-700 hidden md:block"></div>
 
                 {/* User Profile */}
                 <div className="flex items-center gap-3 cursor-pointer hover:bg-gray-50 dark:hover:bg-slate-700 p-1.5 rounded-lg transition border border-transparent hover:border-gray-200 dark:hover:border-slate-600">

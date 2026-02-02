@@ -131,7 +131,7 @@ const Safety = () => {
     </div>
   );
 };
-
+ 
 // --- Sub-Components for Clean Code ---
 
 const EmergencyBadge = ({ number, label }) => (

@@ -45,7 +45,7 @@ const Dashboard = () => {
       severity: "Critical",
     }, // Added one more for demo
   ];
-
+ 
   return (
     // Added 'animate-fadeIn' for smooth entry
     <div className="space-y-6 md:space-y-8 animate-fadeIn pb-20 md:pb-0 m-10">

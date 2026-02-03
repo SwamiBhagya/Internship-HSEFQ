@@ -50,7 +50,7 @@ const Sidebar = ({ isOpen, onClose }) => {
           }
           if (item.type === "special") {
             return (
-              <Link key={item.id} to={item.path} onClick={onClose} className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 border ${isActive(item.path) ? "bg-blue-600/20 border-blue-500/50 text-blue-400 shadow-inner" : "bg-gradient-to-r from-blue-600/10 to-transparent border-transparent text-blue-400 hover:bg-blue-600/20 hover:text-blue-300"}`}>
+              <Link key={item.id} to={item.path} onClick={onClose} className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 border ${isActive(item.path) ? "bg-blue-600/20 border-blue-500/50 text-blue-400 shadow-inner" : "bg-linear-to-r from-blue-600/10 to-transparent border-transparent text-blue-400 hover:bg-blue-600/20 hover:text-blue-300"}`}>
                 <div className={`p-1.5 rounded-lg ${isActive(item.path) ? "bg-blue-500 text-white" : "bg-blue-900/50 text-blue-400"}`}><span className="text-xs flex items-center justify-center">{item.icon}</span></div>
                 <span className="font-semibold">{item.label}</span>
               </Link>

@@ -116,7 +116,7 @@ const Safety = () => {
           <div className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 flex flex-col md:flex-row gap-6">
             <div className="w-full md:w-1/3 h-40 bg-slate-900 rounded-xl flex items-center justify-center relative cursor-pointer group overflow-hidden">
               {/* Fake Video Thumbnail Effect */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+              <div className="absolute inset-0 bg-linear-to-t from-black/80 to-transparent"></div>
               <FaPlayCircle className="text-white text-5xl opacity-90 group-hover:scale-110 transition-transform z-10" />
               <div className="absolute bottom-3 right-3 bg-black/60 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded">
                 12:30

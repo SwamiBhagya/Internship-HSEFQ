@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom"; // Needed for the FAB
+
 import {
   FaExclamationTriangle,
   FaCheckCircle,
@@ -11,9 +12,9 @@ import {
 
 const Dashboard = () => {
   // 1. Dynamic Greeting Logic
-  const hour = new Date().getHours();
-  const greeting =
-    hour < 12 ? "Good Morning" : hour < 18 ? "Good Afternoon" : "Good Evening";
+  // const hour = new Date().getHours();
+  // const greeting =
+  //   hour < 12 ? "Good Morning" : hour < 18 ? "Good Afternoon" : "Good Evening";
 
   const recentIncidents = [
     {
@@ -53,7 +54,7 @@ const Dashboard = () => {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 px-2 md:px-0 mx-10 my-10">
         <div>
           <h1 className="text-2xl md:text-3xl font-bold text-gray-900">
-            DashBoard
+            DashBoard 
           </h1>
           <p className="text-gray-500 text-xs md:text-sm mt-1">
             Here is what's happening at the facility today.

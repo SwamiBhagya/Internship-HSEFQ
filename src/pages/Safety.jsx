@@ -1,13 +1,5 @@
 import {
-  FaFilePdf,
-  FaPlayCircle,
-  FaPhoneAlt,
-  FaFirstAid,
-  FaFireExtinguisher,
-  FaHardHat,
-  FaArrowRight,
-  FaUserShield,
-  FaAmbulance,
+  FaFilePdf,  FaPlayCircle,  FaPhoneAlt,  FaFirstAid,  FaFireExtinguisher,  FaHardHat,  FaArrowRight,  FaUserShield,  FaAmbulance,
 } from "react-icons/fa";
 
 const Safety = () => {
@@ -203,7 +195,7 @@ const Safety = () => {
 // --- Sub-Components (Restyled to match Dashboard) ---
 
 // 1. Emergency Card -> Uses logic from Dashboard's StatCard
-const EmergencyCard = ({ icon, title, value, subLabel, bgColor, alert }) => (
+const EmergencyCard = ({ icon, title, value, bgColor, alert }) => (
   <div className="bg-white p-4 md:p-6 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between h-32 md:h-auto relative overflow-hidden group cursor-pointer">
     <div
       className={`absolute -right-4 -top-4 w-16 h-16 rounded-full opacity-20 ${bgColor} group-hover:scale-150 transition-transform duration-500`}
